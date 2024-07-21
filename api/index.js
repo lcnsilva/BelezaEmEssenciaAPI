@@ -9,7 +9,14 @@ const app = express();
 const PORT = 3000;
 const conexao = await dbConexao();
 
+
+
 app.use(express.json())
+
+app.use(cors({
+    origin: '*'
+}));
+
 routes(app);
 
 conexao.on("error", (erro) => {
@@ -19,11 +26,6 @@ conexao.on("error", (erro) => {
 conexao.once("open", () => {
     console.log("Banco Conectado.");
 })
-
-
-app.use(cors({
-    origin: '*'
-}));
 
 app.get("/api", (req,res) => {
     res.send("Funcionando.");

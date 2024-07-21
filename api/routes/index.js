@@ -3,7 +3,10 @@ import produto from '../routes/produtoRoutes.js'
 
 const routes = (app) => {
   app.route('/').get((req, res) => {
-    res.status(200).send({titulo: "Curso de node"})
+    res.status(200).send({
+      titulo: "Beleza em Essência API",
+      endpoint_produtos: "/produtos"
+    })
   })
 
   app.use(
