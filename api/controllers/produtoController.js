@@ -19,10 +19,21 @@ class ProdutoController {
   
         res.status(200).json(produtosResultado);
         
-    } catch (erro) {
-            res.status(500).json({ message: "Erro interno no servidor" });
+      } catch (erro) {
+              res.status(500).json({ message: "Erro interno no servidor" });
+      }
     }
-  }
+
+    static listarProdutosLily = async(req, res) => {
+      try {
+        const produtosResultado = await produtos.find({ nome: /lily/i}).exec();
+  
+        res.status(200).json(produtosResultado);
+        
+      } catch (erro) {
+              res.status(500).json({ message: "Erro interno no servidor" });
+      }
+    }
 
     static cadastrarProduto = async (req, res) => {
       try {

@@ -6,6 +6,7 @@ const router = express.Router();
 router
     .get("/produtos", ProdutoController.listarProdutos)
     .get("/produtosLiz", ProdutoController.listarProdutosLiz)
+    .get("/produtosLily", ProdutoController.listarProdutosLily)
     .post("/produtos", ProdutoController.cadastrarProduto)
 
 
