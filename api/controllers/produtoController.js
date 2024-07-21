@@ -4,7 +4,7 @@ class ProdutoController {
 
     static listarProdutos = async(req, res) => {
         try {
-          const produtosResultado = await produtos.find();
+          const produtosResultado = await produtos.find({});
     
           res.status(200).json(produtosResultado);
           
@@ -12,6 +12,17 @@ class ProdutoController {
               res.status(500).json({ message: "Erro interno no servidor" });
       }
     }
+
+    static listarProdutosLiz = async(req, res) => {
+      try {
+        const produtosResultado = await produtos.find({ nome: /liz/i}).exec();
+  
+        res.status(200).json(produtosResultado);
+        
+    } catch (erro) {
+            res.status(500).json({ message: "Erro interno no servidor" });
+    }
+  }
 
     static cadastrarProduto = async (req, res) => {
       try {
