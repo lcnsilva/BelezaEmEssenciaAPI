@@ -4,7 +4,7 @@ import ProdutoController from "../controllers/produtoController.js";
 const routes = express.Router();
 
 routes.get('/',(req,res) => {
-  res.send("testando");
+  res.send("Beleza em Essência API.");
 })
 
 routes.get("/produtos", ProdutoController.listarProdutos);
