@@ -18,7 +18,7 @@ class ProdutoController {
         res.status(200).send(produtosResultado);
         console.log(produtosResultado);
       } catch (erro) {
-        res.status(400).send({message: `${erro.message} - Id do Autor não localizado.`});
+        res.status(400).send({message: `${erro.message} - Id do Produto não localizado.`});
       }
     }
 
