@@ -1,18 +1,18 @@
 import express from "express";
-import produto from '../routes/produtoRoutes.js'
+import ProdutoController from "../controllers/produtoController.js";
 
-const routes = (app) => {
-  app.route('/').get((req, res) => {
-    res.status(200).send({
-      titulo: "Beleza em Essência API",
-      endpoint_produtos: "/produtos"
-    })
-  })
+const routes = express.Router();
 
-  app.use(
-    express.json(),
-    produto
-  )
-}
+routes.get('/',(req,res) => {
+  res.send("testando");
+})
+
+routes.get("/produtos", ProdutoController.listarProdutos);
+routes.get("/produtos/:id", ProdutoController.listarProdutoPorId);
+routes.get("/produtos/categoria/:categoria", ProdutoController.listarProdutosPorCategoria);
+routes.get("/produtos/linha/:linha", ProdutoController.listarProdutosPorLinha);
+routes.post("/produtos", ProdutoController.cadastrarProduto);
+routes.put("/produtos/:id", ProdutoController.atualizarProduto);
+routes.delete("/produtos/:id", ProdutoController.excluirProduto);
 
 export default routes;

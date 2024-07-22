@@ -1,8 +1,12 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 async function dbConnection() {
-    mongoose.connect(process.env.MONGODB_URI);     
-    return mongoose.connection;
+    try{
+        mongoose.connect(process.env.MONGODB_URI);        
+        return mongoose.connection;
+    } catch (error) {
+        console.error('Erro ao conectar ao MongoDB:', error);
+    }
 }
 
 export default dbConnection;
