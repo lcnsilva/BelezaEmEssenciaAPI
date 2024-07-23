@@ -57,7 +57,7 @@ class ProdutoController {
       const id = req.params.id;
       try {  
         await produtos.findByIdAndUpdate(id, {$set: req.body});
-        res.status(200).send({message: "Produto atualizado com sucesso"});
+        res.status(204).send({message: "Produto atualizado com sucesso"});
       } catch (erro) {
         res.status(500).send({message: erro.message});
       }
