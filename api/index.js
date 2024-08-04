@@ -14,7 +14,7 @@ conexao.once("open", () => {
 
 const allowedOrigins = ['http://localhost:3000',
                         'https://beleza-em-essencia-api.vercel.app',
-                        'https://beleza-em-essencia.vercel.app/',
+                        'https://beleza-em-essencia.vercel.app',
                         'http://127.0.0.1:5500'];
 
 const corsOptions = {
