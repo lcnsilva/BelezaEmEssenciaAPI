@@ -12,11 +12,26 @@ conexao.once("open", () => {
     console.log("Conectado ao banco.");
 })
 
+const allowedOrigins = ['http://localhost:3000',
+                        'https://beleza-em-essencia-api.vercel.app',
+                        'http://127.0.0.1:5500'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            console.log('Origin:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json())
 
-app.use(cors({
-    origin: '*'
-}));
+app.use(cors(corsOptions));
 
 app.use(routes);
 
